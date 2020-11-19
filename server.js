@@ -9,44 +9,44 @@ app.use(body.urlencoded({
     extended: true
 }));
 
-const conn = sql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'emp'
-})
+// const conn = sql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: '',
+//     database: 'emp'
+// })
 // conn.connect((err)=>{
 //     if(!err)
 //     console.log("Hello")
 //     else
 //     console.log(err)
 // })
-// const con = {
-//     host: 'us-cdbr-east-02.cleardb.com',
-//     user: 'bb15502456e8c5',
-//     password: 'cfa9ff36',
-//     database: 'heroku_1f31d6bcc6474b1'
-// }
-// var conn;
-// function handleDisconnect() {
-//   conn = sql.createConnection(con);                                             
-//   conn.connect(function(err) {             
-//     if(err) {                                   
-//       console.log('error when connecting to db:', err);
-//       setTimeout(handleDisconnect, 2000); 
-//     }                                   
-//   });                                
-//   conn.on('error', function(err) {
-//     console.log('db error', err);
-//     if(err.code === 'PROTOCOL_CONNECTION_LOST') { 
-//       handleDisconnect();                        
-//     } else {                                      
-//       throw err;                                  
-//     }
-//   });
-// }
+const con = {
+    host: 'us-cdbr-east-02.cleardb.com',
+    user: 'bb15502456e8c5',
+    password: 'cfa9ff36',
+    database: 'heroku_1f31d6bcc6474b1'
+}
+var conn;
+function handleDisconnect() {
+  conn = sql.createConnection(con);                                             
+  conn.connect(function(err) {             
+    if(err) {                                   
+      console.log('error when connecting to db:', err);
+      setTimeout(handleDisconnect, 2000); 
+    }                                   
+  });                                
+  conn.on('error', function(err) {
+    console.log('db error', err);
+    if(err.code === 'PROTOCOL_CONNECTION_LOST') { 
+      handleDisconnect();                        
+    } else {                                      
+      throw err;                                  
+    }
+  });
+}
 
-// handleDisconnect();
+handleDisconnect();
 
 
 
